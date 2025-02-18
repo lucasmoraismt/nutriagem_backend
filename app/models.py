@@ -3,8 +3,8 @@ from enum import Enum
 from pydantic import BaseModel
 
 class SexOptions(str, Enum):
-  heterosexual_male = "Homem heterossexual"
-  heterosexual_female = "Mulher heterossexual"
+  heterosexual_male = "Homem hetero"
+  heterosexual_female = "Mulher hetero"
   trans_male = "Homem trans"
   trans_female = "Mulher trans"
   other = "Outro"

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from routes import health
+from routes import health, forms
 
-api_router = APIRouter()
-api_router.include_router(health.router)
-# api_router.include_router(forms.router)
+apiRouter = APIRouter()
+apiRouter.include_router(health.router)
+apiRouter.include_router(forms.router)
