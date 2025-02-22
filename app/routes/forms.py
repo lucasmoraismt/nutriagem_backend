@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from models import FormData
 from utils.promptHelper import generatePrompt
+import google.generativeai as genai
 
 router = APIRouter(prefix="/forms", tags=["forms"])
 
@@ -243,9 +244,14 @@ async def show_form():
 async def analyze_form(formData: FormData):
   # Generate LLM prompt
   llmPrompt = generatePrompt(formData)
+
+  # LLM Integration
+  genai.configure(api_key="$APIKEY") # Insert API Key here
+  model = genai.GenerativeModel("gemini-1.5-flash") # or gemini-1.5-pro
+
+  response = model.generate_content(llmPrompt)
   
-  # Insert LLM integration here
   return {
     "message": "Form processed successfully",
-    "llmPrompt": llmPrompt
+    "response": response.text
   }
