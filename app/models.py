@@ -35,7 +35,7 @@ class FormData(BaseModel):
   ultra_processed_foods: DietaryFrequency
   sweets: DietaryFrequency
   water_intake_liters: float
-  special_dietary_practices: str
+  special_dietary_practices: str | None = None
   breakfast_time: str = ""
   lunch_time: str = ""
   dinner_time: str = ""
