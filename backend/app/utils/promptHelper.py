@@ -1,4 +1,4 @@
-from models import FormData
+from backend.app.models.FormData import FormData
 
 def generatePrompt(data: FormData) -> str:
   # Map boolean values to "Sim"/"Não"

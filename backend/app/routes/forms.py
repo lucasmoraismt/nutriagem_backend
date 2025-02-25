@@ -1,8 +1,11 @@
+import os
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
-from models import FormData
+from backend.app.models.FormData import FormData
 from utils.promptHelper import generatePrompt
 import google.generativeai as genai
+
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 router = APIRouter(prefix="/forms", tags=["forms"])
 
