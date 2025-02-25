@@ -1,4 +1,3 @@
-from enum import Enum
 from pydantic import BaseModel
 from GenderOptions import GenderOptions
 from DietaryFrequency import DietaryFrequency
