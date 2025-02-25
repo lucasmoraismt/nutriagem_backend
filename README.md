@@ -3,7 +3,7 @@
 <!-- ![Project Banner](doc/banner.png) Add actual image path later -->
 
 ## Project Description
-A web application developed for the Software Development course at CIn/UFPE (2024.2). NutriAge helps nutrition professionals collect patient health data and generate AI-powered nutritional assessments. The system provides qualitative feedback through email integration and recommends appropriate professional follow-up when needed.
+A web application developed for the Software Development course at CIn/UFPE (2024.2). Nutriagem helps nutrition professionals collect patient health data and generate AI-powered nutritional assessments. The system provides qualitative feedback through email integration and recommends appropriate professional follow-up when needed.
 
 **Key Features**:
 - Patient health data collection form
@@ -90,7 +90,7 @@ A web application developed for the Software Development course at CIn/UFPE (202
   uvicorn app.main:apiRouter --reload
 
   # Windows
-  venv\Scripts\activate.bat
+  venv\Scripts\activate
   uvicorn app.main:apiRouter --reload
 ```
 
