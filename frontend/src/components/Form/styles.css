@@ -1,0 +1,31 @@
+label {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+form {
+  display: grid;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+input[type="checkbox"] {
+  margin-right: 4px;
+}
