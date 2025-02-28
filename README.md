@@ -96,7 +96,7 @@ A web application developed for the Software Development course at CIn/UFPE (202
 
 ### Start Frontend (from frontend folder)
 ```bash
-  npm start
+  npm run dev
 ```
 
 ## API Documentation
