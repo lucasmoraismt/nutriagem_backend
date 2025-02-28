@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import FormField from './FormField'
 import Button from '../Button'
 import './styles.css'
@@ -73,63 +74,53 @@ const Form = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Dados enviados:', formData)
-    
-    // Faz a requisição POST para o backend
-    fetch('…/forms', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro ao enviar formulário');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Resposta do servidor:', data);
-      alert('Formulário enviado com sucesso!');
-      // Pode-se resetar o form ou redirecionar o usuário
-    })
-    .catch(error => {
-      console.error('Erro:', error);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Dados enviados:', formData);
+  
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/forms/', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      });
+  
+      console.log('Ta Aqui a resposta:', response.data);
+    } catch (error) {
+      console.error('Erro:', error.response ? error.response.data : error.message);
       alert('Erro ao enviar formulário. Por favor, tente novamente.');
-    });
-  }
+    }
+  };
 
   const sexOptions = [
-    { value: 'heterosexual_male', label: 'Homem hetero' },
-    { value: 'heterosexual_female', label: 'Mulher hetero' },
-    { value: 'trans_male', label: 'Homem trans' },
-    { value: 'trans_female', label: 'Mulher trans' },
-    { value: 'other', label: 'Outro' }
+    { value: 'Homem hetero', label: 'Homem hetero' },
+    { value: 'Mulher hetero', label: 'Mulher hetero' },
+    { value: 'Homem trans', label: 'Homem trans' },
+    { value: 'Mulher trans', label: 'Mulher trans' },
+    { value: 'Outro', label: 'Outro' }
   ]
 
   const dietaryFrequencyOptions = [
-    { value: 'daily', label: 'Diário' },
-    { value: 'couple_times_week', label: 'Algumas vezes na semana' },
-    { value: 'rarely', label: 'Raramente' },
-    { value: 'never', label: 'Nunca' }
+    { value: 'diário', label: 'Diário' },
+    { value: 'algumas vezes na semana', label: 'Algumas vezes na semana' },
+    { value: 'raramente', label: 'Raramente' },
+    { value: 'nunca', label: 'Nunca' }
   ]
 
   const activityFrequencyOptions = [
-    { value: 'daily', label: 'Diariamente' },
-    { value: '3_4_times_week', label: '3-4 vezes por semana' },
-    { value: '1_2_times_week', label: '1-2 vezes por semana' },
-    { value: 'rarely', label: 'Raramente' },
-    { value: 'never', label: 'Nunca' }
+    { value: 'diariamente', label: 'Diariamente' },
+    { value: '3-4 vezes por semana', label: '3-4 vezes por semana' },
+    { value: '1-2 vezes por semana', label: '1-2 vezes por semana' },
+    { value: 'raramente', label: 'Raramente' },
+    { value: 'nunca', label: 'Nunca' }
   ]
 
   const stressLevelOptions = [
-    { value: 'low', label: 'Baixo' },
-    { value: 'moderate', label: 'Moderado' },
-    { value: 'high', label: 'Alto' },
-    { value: 'very_high', label: 'Muito alto' }
+    { value: 'baixo', label: 'Baixo' },
+    { value: 'moderado', label: 'Moderado' },
+    { value: 'alto', label: 'Alto' },
+    { value: 'muito alto', label: 'Muito alto' }
   ]
 
   return (
@@ -627,7 +618,7 @@ const Form = () => {
       </div>
       
       <div className="form-actions">
-        <Button type="submit" text="Enviar Formulário" disabled={!formData.consent_given} />
+        <Button type="submit" text="Enviar Formulário" />
       </div>
     </form>
   )
